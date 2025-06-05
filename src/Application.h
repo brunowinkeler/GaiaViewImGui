@@ -1,10 +1,9 @@
 #pragma once
 #include <memory>
-#include "Sensor/TemperatureSensor.h"
+#include "Sensor/SensorManager.h"
 
 namespace gaia
 {
-
     class Application
     {
     public:
@@ -12,7 +11,7 @@ namespace gaia
         void run();
 
     private:
-        std::unique_ptr<sensor::TemperatureSensor> tempSensor_;
+        std::unique_ptr<sensor::SensorManager> sensorManager_;
     };
 
 } // namespace gaia

@@ -12,7 +12,7 @@ namespace gaia::sensor
         : Sensor(std::move(id), std::move(name), std::move(unit), minValue, maxValue),
           source_(std::move(source)) {}
 
-    void TemperatureSensor::update(float /*deltaTime*/)
+    void TemperatureSensor::update(float deltaTime)
     {
         float temp = static_cast<float>(source_->readValue());
         setValue(temp);
