@@ -10,7 +10,7 @@ namespace gaia::sensor
     {
     public:
         void addSensor(std::unique_ptr<Sensor> sensor);
-        void updateAll(float deltaTime);
+        void updateAll();
         const std::vector<std::unique_ptr<Sensor>> &sensors() const;
         Sensor *findById(const std::string &id);
         bool removeById(const std::string &id);

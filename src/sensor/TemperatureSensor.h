@@ -1,3 +1,4 @@
+// src/Sensor/TemperatureSensor.h
 #pragma once
 #include "Sensor.h"
 #include <memory>
@@ -9,14 +10,12 @@ namespace gaia::sensor
     class TemperatureSensor : public Sensor
     {
     public:
-        TemperatureSensor(std::string id,
-                          std::string name,
-                          std::string unit,
-                          float minValue,
-                          float maxValue,
+        TemperatureSensor(std::string id, std::string name, std::string unit,
+                          float minValue, float maxValue, double updateInterval,
                           std::unique_ptr<gaia::datasource::IDataSource> source);
 
-        void update(float deltaTime) override;
+    protected:
+        void update() override;
 
     private:
         std::unique_ptr<gaia::datasource::IDataSource> source_;

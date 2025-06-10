@@ -11,14 +11,14 @@ namespace gaia
     {
         sensorManager_ = std::make_unique<sensor::SensorManager>();
         sensorManager_->addSensor(std::make_unique<sensor::TemperatureSensor>(
-            "temp1", "Main Temp", "C", 15.0f, 30.0f, std::make_unique<datasource::SimulatedDataSource>()));
+            "temp1", "Main Temp", "C", 15.0f, 30.0f, 1.0f, std::make_unique<datasource::SimulatedDataSource>()));
     }
 
     void Application::run()
     {
         while (true)
         {
-            sensorManager_->updateAll(0.5f);
+            sensorManager_->updateAll();
             for (const auto &sensor : sensorManager_->sensors())
             {
                 std::cout << sensor->id() << ": " << sensor->value() << sensor->unit() << "\n";

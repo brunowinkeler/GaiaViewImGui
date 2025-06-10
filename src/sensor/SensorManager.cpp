@@ -8,11 +8,11 @@ namespace gaia::sensor
         sensors_.push_back(std::move(sensor));
     }
 
-    void SensorManager::updateAll(float deltaTime)
+    void SensorManager::updateAll()
     {
         for (auto &sensor : sensors_)
         {
-            sensor->update(deltaTime);
+            sensor->tryUpdate();
         }
     }
 
