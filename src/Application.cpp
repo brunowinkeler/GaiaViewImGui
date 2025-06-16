@@ -1,28 +1,26 @@
 #include "Application.h"
-#include "DataSource/SimulatedDataSource.h"
 #include "Sensor/TemperatureSensor.h"
-#include <iostream>
-#include <thread>
-#include <chrono>
+#include "DataSource/SimulatedDataSource.h"
 
 namespace gaia
 {
+
     Application::Application()
     {
-        sensorManager_ = std::make_unique<sensor::SensorManager>();
-        sensorManager_->addSensor(std::make_unique<sensor::TemperatureSensor>(
-            "temp1", "Main Temp", "C", 15.0f, 30.0f, 1.0f, std::make_unique<datasource::SimulatedDataSource>()));
+        sensorManager_.addSensor(std::make_unique<sensor::TemperatureSensor>(
+            "temp1", "Main Temp", "C", 15.0f, 30.0f, 0.5,
+            std::make_unique<datasource::SimulatedDataSource>()));
+        gui_.init("GaiaView", 1280, 720);
     }
 
     void Application::run()
     {
-        while (true)
+        while (gui_.processEvents())
         {
-            sensorManager_->updateAll();
-            for (const auto &sensor : sensorManager_->sensors())
-            {
-                std::cout << sensor->id() << ": " << sensor->value() << sensor->unit() << "\n";
-            }
+            sensorManager_.updateAll();
+            gui_.beginFrame();
+            gui_.plot(sensorManager_);
+            gui_.endFrame();
         }
     }
 

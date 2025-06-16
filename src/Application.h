@@ -1,6 +1,6 @@
 #pragma once
-#include <memory>
 #include "Sensor/SensorManager.h"
+#include "UI/GuiRenderer.h"
 
 namespace gaia
 {
@@ -11,7 +11,8 @@ namespace gaia
         void run();
 
     private:
-        std::unique_ptr<sensor::SensorManager> sensorManager_;
+        sensor::SensorManager sensorManager_;
+        ui::GuiRenderer gui_;
     };
 
 } // namespace gaia

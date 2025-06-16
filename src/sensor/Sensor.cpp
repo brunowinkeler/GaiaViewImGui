@@ -10,6 +10,7 @@ namespace gaia::sensor
         if (currentTime - lastUpdateTime_ >= updateInterval_)
         {
             update();
+            updated_ = true;
             lastUpdateTime_ = currentTime;
         }
     }

@@ -17,6 +17,9 @@ namespace gaia::sensor
 
         virtual ~Sensor() = default;
         virtual void tryUpdate();
+        double lastUpdateTime() const { return lastUpdateTime_; }
+        void resetUpdated() { updated_ = false; }
+        bool wasUpdated() const { return updated_; }
 
         const std::string &id() const { return id_; }
         const std::string &name() const { return name_; }
@@ -42,6 +45,7 @@ namespace gaia::sensor
         SensorStatus status_;
         double updateInterval_; // seconds between updates
         double lastUpdateTime_; // last update time in seconds
+        bool updated_ = false;
     };
 
 } // namespace gaia::sensor
