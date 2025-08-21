@@ -34,7 +34,7 @@ namespace gaia::ui
     void GuiRenderer::init(const char *title, int width, int height)
     {
         SDL_Init(SDL_INIT_VIDEO);
-        window_ = SDL_CreateWindow(title, width, height, SDL_WINDOW_FULLSCREEN);
+        window_ = SDL_CreateWindow(title, width, height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED);
         renderer_ = SDL_CreateRenderer(window_, nullptr);
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();

@@ -8,9 +8,9 @@ namespace gaia
     Application::Application()
     {
         sensorManager_.addSensor(std::make_unique<sensor::TemperatureSensor>(
-            "temp1", "Main Temp", "C", 15.0f, 30.0f, 0.5,
+            "temp1", "Main Temp", "C", 15.0f, 30.0f, 2.0,
             std::make_unique<datasource::SimulatedDataSource>()));
-        gui_.init("GaiaView", 1280, 720);
+        gui_.init("Gaia View App", 1920, 1080);
     }
 
     void Application::run()
